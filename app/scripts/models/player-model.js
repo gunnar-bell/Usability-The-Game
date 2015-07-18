@@ -1,15 +1,30 @@
 define([
-      'spaceshipModel'
-    ], function(SpaceshipModel) {
+      'spaceshipModel',
+      'planetModel'
+    ], function(SpaceshipModel, PlanetModel) {
   var PlayerModel = function() {
     this.init = function() {
       this.spaceship = new SpaceshipModel();
-      this.spaceship.refuel(); // for testing
       this.resources = {'stardust':5};
-      this.currentPlanet = 'earth';
       console.log('building playerModel!!');
     };
-    this.position  = {'x':100,'y':100};//this.currentPlanet.location;
+
+    this.setPlanet = function(planetName) {
+      this.currentPlanet = new PlanetModel(planetName);       
+      this.currentPlanet.init();
+      this.position  = this.currentPlanet.getLocation();
+    }
+
+    this.refuelSpaceship = function() {
+      if (this.currentPlanet.hasGasStation) {
+        var refillCost = this.currentPlanet.strength * .25;
+        var refill = confirm('Fuel up here? It will cost ' + refillCost + ' grams of stardust.');
+        if (refill) {
+          this.spaceship.refuel();
+          this.stardust -= refillCost;
+        }
+      }
+    }
   };
 
   return PlayerModel;

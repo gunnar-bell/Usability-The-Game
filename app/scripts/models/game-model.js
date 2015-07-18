@@ -10,6 +10,7 @@ define(
       // set up the state and all event listeners
       this.player = new PlayerModel();
       this.player.init();
+      this.player.setPlanet('earth');
       this.buildMap();
     };
 
