@@ -13,7 +13,8 @@ require.config({
         universeModel: 'models/universe-model',
         solrSystemModel: 'models/solr-system-model',
         planetModel: 'models/planet-model',
-        spaceshipModel: 'models/spaceship-model'
+        spaceshipModel: 'models/spaceship-model',
+        missionModel: 'models/mission-model.js'
     }
 });
 
