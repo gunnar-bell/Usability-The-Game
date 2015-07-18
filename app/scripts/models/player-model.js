@@ -1,8 +1,11 @@
 define([
+      'jquery',
+      'chance',
       'spaceshipModel',
       'planetModel'
-    ], function(SpaceshipModel, PlanetModel) {
+    ], function($, Chance, SpaceshipModel, PlanetModel) {
   var PlayerModel = function() {
+    this.chance = new Chance();
     this.init = function() {
       console.log('building playerModel!!');
       this.spaceship = new SpaceshipModel();
