@@ -29,7 +29,6 @@ require([
     'gameView',
     'progress'
 ], function (GameModel, GameView, p) {
-	debugger;
     var g = new GameModel();
     g.init();
     var v = new GameView();

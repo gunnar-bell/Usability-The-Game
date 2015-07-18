@@ -1,0 +1,44 @@
+.wrapper {
+    background-color: #222;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.enemy {
+    background-color: #222;
+    height: 37.5%;
+}
+.e_status {
+    background-color: #FDE3A7;
+    height: 15%;
+    width: 30%;
+    top: 7%;
+    left: 7%;
+    position: absolute;
+    border-radius: 5px;
+    border: 7px double #C0392B;
+}
+.player {
+    background-color: #222;
+    height: 37.5%;
+}
+.p_status {
+    background-color: #FDE3A7;
+    height: 15%;
+    width: 30%;
+    top: calc(75% - 22% - 5px);
+    right: 7%;
+    position: absolute;
+    border-radius: 5px;
+    border: 7px double #26A65B;
+}
+.textArea {
+    background-color: #222;
+    color: white;
+    height: calc(25% - 20px);
+    border: 5px solid white;
+    border-radius: 5px;
+    padding: 5px 5px 5px 100px;
+}
