@@ -41,6 +41,7 @@
                                         "hasBattle": true,
                                         "startInitiatesBattle": true,
                                         "endingDialogue": "Well played mate. By the code of space pirates, you now get all of our honestly-acquired booty!",
+                                        "requiresTravel": false,
                                         "requiresRoundTrip": false
                                       },
                                       {
@@ -50,7 +51,8 @@
                                         "relicPurchasePercent": 0.1,
                                         "relicName": "Ham sandwich",
                                         "endingDialogue": "Hmm? What would I want with a {relicName}? Get outta here!",
-                                        "requiresRoundTrip": false
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": true
                                       }
                                     ]
                                   }

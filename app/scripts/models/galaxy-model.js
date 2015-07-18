@@ -25,7 +25,25 @@ define(
         solrSystem.load(galaxyData['solrSystems']['collectionType']['solrSystemModel']);
         this.solrSystems.push(solrSystem);
       }
-    }
+
+      // Now that we've built out the solr systems, planets, and missions. We need to look at the missions and prepare goals where necessary
+      for (var i = 0; i < this.solrSystems.length; i++) {
+        for(var j = 0; j < this.solrSystems[i].planets.length; j++) {
+          for(var k = 0; k < this.solrSystems[i].planets[j].missions.length; k++) {
+            var mission = this.solrSystems[i].planets[j].missions[k];
+            if (mission.requiresTravel()) {
+              // Requires travel, so set a destination now. Really just pick another solr system besides index i. So why not i - 1. Or +1 if zero
+              var destinationIndex = i - 1;
+              if (i === 0) {
+                destinationIndex = i + 1;
+              }
+              mission.setDestination(this.solrSystems[destinationIndex]);
+              console.log(mission);
+            }
+          }
+        }
+      }
+    };
 	}
 
   return GalaxyModel;
