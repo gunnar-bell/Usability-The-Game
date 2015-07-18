@@ -22,10 +22,10 @@ define([
       }
     };
 
-    this.setPlanet = function(planetName) {
-      this.currentPlanet = new PlanetModel(planetName);       
-      this.currentPlanet.init();
-      this.position  = this.currentPlanet.getLocation();
+    this.moveTo = function(planetModel) {
+      this.currentPlanet = planetModel;
+      // this.currentPlanet.init();
+      this.position  = this.currentPlanet.position;
     }
 
     this.refuelSpaceship = function() {
@@ -37,6 +37,23 @@ define([
           this.stardust -= refillCost;
         }
       }
+    }
+
+    this.calculateFuelUsage = function(solrSystem) {
+      return lineDistance(this.position, solrSystem.position);
+    };
+
+    function lineDistance( point1, point2 ) {
+      var xs = 0;
+      var ys = 0;
+
+      xs = point2.x - point1.x;
+      xs = xs * xs;
+
+      ys = point2.y - point1.y;
+      ys = ys * ys;
+
+      return Math.sqrt( xs + ys );
     }
   };
 

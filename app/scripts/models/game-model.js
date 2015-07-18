@@ -49,6 +49,10 @@ define(
       //     ////var universes = gameModel.buildCollectionElement(multiverse);////['universes']);
       //     //console.log(universes);
       // });
+
+      // let's give the player a starting point
+      var galaxy = this.getCurrentGalaxy();
+      this.player.moveTo(galaxy.solrSystems[0]);
 		};
 
     this.buildCollectionElement = function(element) {

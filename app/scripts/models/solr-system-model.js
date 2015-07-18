@@ -8,7 +8,28 @@ define(
 
   var SolrSystemModel = function(options) {
     this.planets = [];
+    this.opportunities = [];
     this.chance = new Chance();
+
+    var opportunityTypes = {
+      'fuel': {
+        'display': 'Fuel Up!',
+        'chance': 0.9
+      },
+      'food': {
+        'display': 'Get Groceries!',
+        'chance': 0.8
+      },
+      'weapons': {
+        'display': 'Laser Beams Sold Here!',
+        'chance': 0.3
+      },
+      'repairs': {
+        'display': 'Fix You Right Up!',
+        'chance': 0.6
+      }
+    }
+
     this.init = function() {
 
       var planetCount = this.planets.length;
@@ -23,10 +44,12 @@ define(
       }
       this.moralStanding = (evilScore > goodScore) ? 'EVIL' : 'GOOD';
 
-      this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1})}
+      ///this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1})};
+      this.name = this.chance.last() + this.chance.character({alpha: true, casing: 'upper'}) + this.chance.natural({min: 100, max: 999});
     };
 
     this.load = function(solrSystemData) {
+      this.init();
       var min = solrSystemData['planets']['min'];
       var max = solrSystemData['planets']['max'];
       var count = min === max ? min : chance.natural({'min': min, 'max': max});
@@ -39,6 +62,12 @@ define(
 
       this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1}) };
       this.size = this.chance.floating({min: 0, max: 1});
+
+      for (var key in opportunityTypes) {
+        if (opportunityTypes.hasOwnProperty(key) && this.chance.floating({min: 0, max: 1}) >= (1 - opportunityTypes[key].chance)) {
+          this.opportunities.push(opportunityTypes[key].display);
+        }
+      }
     }
 
   };
