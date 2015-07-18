@@ -11,7 +11,6 @@ define([
       this.spaceship = new SpaceshipModel();
       this.health = 90;
       this.resources = {'stardust':5};
-      this.currentPlanet = 'earth';
       this.strength = 10;
       this.attack = function(attackee) {
         if (Math.random() > .2) { // 80% chance to hit always?
