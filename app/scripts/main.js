@@ -17,14 +17,18 @@ require.config({
         solrSystemModel: 'models/solr-system-model',
         planetModel: 'models/planet-model',
         spaceshipModel: 'models/spaceship-model',
-        missionModel: 'models/mission-model.js'
+        missionModel: 'models/mission-model.js',
+        gameView: 'views/game-view',
+        galaxyView: 'views/galaxy-view'
     }
 });
 
 require([
     'gameModel',
-    'universeModel'
-], function (GameModel) {
+    'gameView'
+], function (GameModel, GameView) {
     var g = new GameModel();
     g.init();
+    var v = new GameView();
+    v.render(g);
 });
