@@ -12,6 +12,7 @@ define(
 		}
 		this.buildMap = function() {
 			// feissal's code
+			console.log('building map!!');
 		}
 	}
 
