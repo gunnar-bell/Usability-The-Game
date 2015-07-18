@@ -46,14 +46,45 @@
                                       },
                                       {
                                         "name": "Playing Fetch",
-                                        "startingDialogue": "What? You want a mission? Uhh alright, go fetch me a {relic name}.",
+                                        "startingDialogue": "What? You want a mission? Uhh alright, go fetch me a {relicName}.",
                                         "hasBattle": false,
                                         "relicPurchasePercent": 0.1,
                                         "relicName": "Ham sandwich",
                                         "endingDialogue": "Hmm? What would I want with a {relicName}? Get outta here!",
                                         "requiresTravel": true,
                                         "requiresRoundTrip": true
+                                      },
+                                      {
+                                        "name": "Devastate Rodar of Zolcon and retrieve the {relicName} from his conniving little fingers.",
+                                        "startingDialogue": "{relicName}s are not for the likes of you and your kind.  Plus, you'll never defeat me! -Rodar of Zolcon",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.2,
+                                        "relicName": "Illustrious orb",
+                                        "endingDialogue": "I don't care that you beat me this time.  You don't even know how to use the {relicName} anyway.  Good riddance, Fool!",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": true
+                                      },
+                                      {
+                                        "name": "Learn the ways of the Ancients",
+                                        "startingDialogue": "Kids these days know nothing of the ancient magic of aliens. Copies of the {relicName} have been passed down for generations on fading fax machine paper that's hard to keep flat but few know its true power because none remember how to pronounce all the words right.",
+                                        "hasBattle": false,
+                                        "relicPurchasePercent": 0.4,
+                                        "relicName": "Scroll of the Ages",
+                                        "endingDialogue": "It's going to take you a long time to learn the language this {relicName} is written in, never mind pronouncing its incantations correctly.  Good luck, Friend!! Hope you don't turn yourself into a toad.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false 
+                                      },
+                                      {
+                                        "name": "Get Hula Hoop",
+                                        "startingDialogue": "People from all plants will be amazed when you use this thing.  Make petty cash like nobody's business in any major city.",
+                                        "hasBattle": false,
+                                        "relicPurchasePercent": 0.23,
+                                        "relicName": "Hula Hoop of Fake Fire",
+                                        "endingDialogue": "This here ring of fire only looks like its on fire, all the time.  Except it's not.  It just looks that way.  You can spin it and twirl it while wearing polyester. No problemo.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
                                       }
+
                                     ]
                                   }
                                 },

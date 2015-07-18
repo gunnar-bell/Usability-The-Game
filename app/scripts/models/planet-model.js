@@ -11,7 +11,6 @@ define(
     this.init = function() {
       this.moralStanding = 'GOOD|EVIL';
       this.location = {x: 'a number', y: 'a number'};
-      this.strength = this.chance.natural({min: 5, max: 30});
     }
     this.getLocation = function() {
     	return this.location;
@@ -22,6 +21,7 @@ define(
 
     this.load = function(planetData) {
       this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1})};
+      this.strength = this.chance.natural({min: 5, max: 30});
 
       var min = planetData['missions']['min'];
       var max = planetData['missions']['max'];

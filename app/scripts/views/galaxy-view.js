@@ -3,9 +3,10 @@ define(
     'jquery',
     'chance',
     'solrSystemModel',
-    'playerModel'
+    'playerModel',
+    'localView'
   ],
-  function($, Chance, SolrSystemModel, PlayerModel) {
+  function($, Chance, SolrSystemModel, PlayerModel, LocalView) {
     var GalaxyView = function(canvas) {
 
       this.stage = new createjs.Stage('canvas');
@@ -25,6 +26,56 @@ define(
       });
 
       this.playerSprite = new createjs.Shape();
+      var view = this;
+
+      canvas.addEventListener("mousewheel", MouseWheelHandler, false);
+      canvas.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+
+      var zoom;
+
+      function MouseWheelHandler(e) {
+        view.zoom(e);
+      }
+
+      this.zoom = function(e) {
+        if(Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)))>0)
+          zoom=1.1;
+        else
+          zoom=1/1.1;
+        var local = view.stage.globalToLocal(view.stage.mouseX, view.stage.mouseY);
+        view.stage.regX=local.x;
+        view.stage.regY = local.y;
+        view.stage.x = view.stage.mouseX;
+        view.stage.y = view.stage.mouseY; 
+        view.stage.scaleX = view.stage.scaleY *= zoom;
+
+        view.stage.update();
+      }
+
+      this.stage.addEventListener("stagemousedown", function(e) {
+        var offset = { x: view.stage.x - e.stageX, y: view.stage.y - e.stageY };
+        view.stage.addEventListener("stagemousemove",function(ev) {
+          view.stage.x = ev.stageX+offset.x;
+          view.stage.y = ev.stageY+offset.y;
+          view.stage.update();
+        });
+        view.stage.addEventListener("stagemouseup", function(){
+          view.stage.removeAllEventListeners("stagemousemove");
+        });
+      });
+
+      this.setZoom = function(solrSystem, zoomLevel) {
+        var x = solrSystem.position.x * canvas.width;
+        var y = solrSystem.position.y * canvas.height;
+        var local = view.stage.globalToLocal(x, y);
+        view.stage.regX = local.x;
+        view.stage.regY = local.y;
+        view.stage.x = x;
+        view.stage.y = y;
+        view.stage.scaleX = view.stage.scaleY = zoomLevel;
+
+        view.stage.update();
+      }
 
       this.render = function(gameModel) {
         var galaxyModel = gameModel.getCurrentGalaxy();
@@ -59,7 +110,7 @@ define(
         // And place the player as well
         var playerX = canvas.width * gameModel.player.position.x;
         var playerY = canvas.height * gameModel.player.position.y;
-        this.playerSprite.graphics.beginFill('red').drawCircle(playerX, playerY, 2);
+        this.playerSprite.graphics.beginFill('red').drawCircle(playerX - 5, playerY - 5, 2);
         this.stage.addChild(this.playerSprite);
         this.stage.update();
       };
@@ -70,7 +121,7 @@ define(
         var playerX = canvas.width * gameModel.player.position.x;
         var playerY = canvas.height * gameModel.player.position.y;
         this.playerSprite = new createjs.Shape();
-        this.playerSprite.graphics.beginFill('red').drawCircle(playerX, playerY, 2);
+        this.playerSprite.graphics.beginFill('red').drawCircle(playerX - 5, playerY - 5, 2);
         this.stage.addChild(this.playerSprite);
       };
 
@@ -83,12 +134,46 @@ define(
         }
       };
 
+      this.askToConfirmTravel = function(solrSystem) {
+        // highlight the solr system in some way and ask for confirmation
+        var fuelUsage = gameModel.player.calculateFuelUsage(solrSystem);
+        var doTravel = true;//// confirm('Confirm Travel for ' + fuelUsage.toFixed(1) + ' gallons of fuel?');
+        if (doTravel) {
+          this.confirmTravel(solrSystem);
+        }
+      };
+
       this.confirmTravel = function(solrSystem) {
         // ENGAGE!
         // TODO: run transport animation here
+        this.setZoom(solrSystem, 6);
         gameModel.player.moveTo(solrSystem);
         this.updatePlayerLocation();
+        if (!this.localView) {
+          this.localView = new LocalView(this);
+        }
+        this.localView.render(gameModel);
       };
+
+      this.transition = function(solrSystem) {
+        //logo = new createjs.Bitmap(logoImage);
+        // logo = new createjs.Shape();
+        // var startingRadius = 50;
+        // var scaleUpRatio = 4.0;
+        //logo.graphics.beginFill('blue').drawCircle(100, 100, startingRadius);
+        //this.stage 
+        // logo.x = 100;
+        // logo.y = 200;
+        //this.stage.addChild(logo);
+        //createjs.Tween.get(logo).to({x: -startingRadius * scaleUpRatio, y: -startingRadius * scaleUpRatio, scaleX: scaleUpRatio, scaleY: scaleUpRatio},1000).wait(1000);
+        //createjs.Ticker.addEventListener("tick", this.tick);
+
+        ///this.setZoom(solrSystem, 10);
+      };
+
+      // this.tick = function() {
+      //   view.stage.update();
+      // }
 
       this.displayDetails = function(event, solrSystem) {
         // If near the right edge, move the hover element to the left of the mouse
