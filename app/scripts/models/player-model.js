@@ -6,6 +6,8 @@ define([
     ], function($, Chance, SpaceshipModel, PlanetModel) {
   var PlayerModel = function() {
     this.chance = new Chance();
+    this.fuelFactor = 100000;
+
     this.init = function() {
       console.log('building playerModel!!');
       this.spaceship = new SpaceshipModel();
@@ -22,8 +24,8 @@ define([
       }
     };
 
-    this.moveTo = function(planetModel) {
-      this.currentPlanet = planetModel;
+    this.moveTo = function(locationModel) {
+      this.currentPlanet = locationModel;
       // this.currentPlanet.init();
       this.position  = this.currentPlanet.position;
     }
@@ -40,7 +42,7 @@ define([
     }
 
     this.calculateFuelUsage = function(solrSystem) {
-      return lineDistance(this.position, solrSystem.position);
+      return lineDistance(this.position, solrSystem.position) * this.fuelFactor;
     };
 
     function lineDistance( point1, point2 ) {

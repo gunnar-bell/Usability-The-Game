@@ -14,40 +14,19 @@ define(
     this.canvas = canvas;
 
     this.details = new createjs.Container();
-    var rect = new createjs.Shape();
+    this.rect = new createjs.Shape();
     var rectWidth = 200;
     var rectHeight = 100;
-    rect.graphics.beginFill('#6e7e8e').drawRect(0, 0, rectWidth, rectHeight);
-    rect.x = 50;
-    rect.y = 50;
-    this.details.addChild(rect);
+    this.rect.graphics.beginFill('#6e7e8e').drawRect(0, 0, rectWidth, rectHeight);
 
     this.text = new createjs.Text();
     this.text.set({
         text: ' '
     });
-    var b = this.text.getBounds();
-    this.text.x = rect.x + (10 - b.width ) / 2; 
-    this.text.y = rect.y + (rectHeight - 50 - b.height ) / 2;
-    
-    //this.details.addChild(bitmapInstance, shapeInstance);
-    //this.details.x = 100;
+
+    this.playerSprite = new createjs.Shape();
 
     this.render = function(gameModel) {
-      // var context = this.canvas.getContext('2d');
-      // var canvasLeft = this.canvas.offsetLeft;
-      // var canvasTop = this.canvas.offsetTop;
-
-      // var background = new Image();
-      // background.src = "https://newevolutiondesigns.com/images/freebies/space-wallpaper-11.jpg";
-
-      // canvas = this.canvas;
-      // var elements = [];
-
-      // background.onload = function(){
-      //   context.drawImage(background,0,0);
-      // }
-
       var galaxyModel = gameModel.getCurrentGalaxy();
       var view = this;
 
@@ -58,27 +37,16 @@ define(
         var y = canvas.height * solrSystem.position.y;
         var size = 6 + solrSystem.size * 3;
 
-        // context.beginPath();
-        // context.arc(x, y, size, 0, 2 * Math.PI, false);
-        // context.fillStyle = 'yellow';
-        // context.fill();
-        // context.lineWidth = 1;
-        // context.strokeStyle = '#003300';
-        // context.stroke();
-
         var circle = new createjs.Shape();
         circle.graphics.beginFill('yellow').drawCircle(x, y, size);
-        // circle.x = 100;
-        // circle.y = 100;
         circle.index = i;
 
         circle.on("click", function() {
-          //console.log(galaxyModel.solrSystems[this.index]);
           view.askToConfirmTravel(galaxyModel.solrSystems[this.index]);
         });
 
-        circle.on("mouseover", function() {
-          view.displayDetails(galaxyModel.solrSystems[this.index]);
+        circle.on("mouseover", function(event) {
+          view.displayDetails(event, galaxyModel.solrSystems[this.index]);
         });
 
         circle.on("mouseout", function() {
@@ -88,22 +56,58 @@ define(
         this.stage.addChild(circle);
       }
 
+      // And place the player as well
+      var playerX = canvas.width * gameModel.player.position.x;
+      var playerY = canvas.height * gameModel.player.position.y;
+      this.playerSprite.graphics.beginFill('red').drawCircle(playerX, playerY, 2);
+      this.stage.addChild(this.playerSprite);
+
       this.stage.update();
+    }
+
+    this.updatePlayerLocation = function() {
+      // And place the player as well
+      this.stage.removeChild(this.playerSprite);
+      var playerX = canvas.width * gameModel.player.position.x;
+      var playerY = canvas.height * gameModel.player.position.y;
+      this.playerSprite = new createjs.Shape();
+      this.playerSprite.graphics.beginFill('red').drawCircle(playerX, playerY, 2);
+      this.stage.addChild(this.playerSprite);
     }
 
     this.askToConfirmTravel = function(solrSystem) {
       // highlight the solr system in some way and ask for confirmation
       var fuelUsage = gameModel.player.calculateFuelUsage(solrSystem);
-      console.log('Confirm Travel for ' + fuelUsage + ' gallons of fuel?');
+      var doTravel = confirm('Confirm Travel for ' + fuelUsage.toFixed(1) + ' gallons of fuel?');
+      if (doTravel) {
+        this.confirmTravel(solrSystem);
+      }
     };
 
     this.confirmTravel = function(solrSystem) {
       // ENGAGE!
       // TODO: run transport animation here
       gameModel.player.moveTo(solrSystem);
+      this.updatePlayerLocation();
     };
 
-    this.displayDetails = function(solrSystem) {
+    this.displayDetails = function(event, solrSystem) {
+      // If near the right edge, move the hover element to the left of the mouse
+      if (event.stageX > canvas.width - 200) {
+        this.rect.x = event.stageX - 220;
+      } else {
+        this.rect.x = event.stageX + 20;
+      }
+
+      // If near the bottom edge, move the hover element to the top of the mouse
+      if (event.stageY > canvas.height - 100) {
+        this.rect.y = event.stageY - 100;
+      } else {
+        this.rect.y = event.stageY;
+      }
+
+      this.details.addChild(this.rect);
+
       var textToDisplay = 'SOLR System: ' + solrSystem.name + '\n';
       for (var i = 0; i < solrSystem.opportunities.length; i++) {
         textToDisplay += '\n' + solrSystem.opportunities[i];
@@ -113,6 +117,9 @@ define(
       this.text.set({
           text: textToDisplay
       });
+      var b = this.text.getBounds();
+      this.text.x = this.rect.x + (b.width - 100) / 2;
+      this.text.y = this.rect.y + (rectHeight - 30 - b.height ) / 2;
       this.details.addChild(this.text);
       this.stage.addChild(this.details);
       this.stage.update();
