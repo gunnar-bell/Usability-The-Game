@@ -8,14 +8,14 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
-        game: 'models/game-model'
+        gameModel: 'models/game-model',
+        universeModel: 'models/universe-model'
     }
 });
 
 require([
-    'backbone',
-    'game'
-], function (Backbone, game) {
-    Backbone.history.start();
-    var g = new game();
+    'gameModel',
+    'universeModel'
+], function (GameModel) {
+    var g = new GameModel();
 });
