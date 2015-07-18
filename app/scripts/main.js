@@ -9,7 +9,10 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         gameModel: 'models/game-model',
-        universeModel: 'models/universe-model'
+        playerModel: 'models/player-model',
+        universeModel: 'models/universe-model',
+        solrSystemModel: 'models/solr-system-model',
+        planetModel: 'models/planet-model'
     }
 });
 
