@@ -18,7 +18,7 @@ require.config({
         solrSystemModel: 'models/solr-system-model',
         planetModel: 'models/planet-model',
         spaceshipModel: 'models/spaceship-model',
-        missionModel: 'models/mission-model.js',
+        missionModel: 'models/mission-model',
         gameView: 'views/game-view',
         galaxyView: 'views/galaxy-view'
     }

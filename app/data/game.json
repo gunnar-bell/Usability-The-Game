@@ -27,7 +27,37 @@
                           "collectionTypeName": "planetModel",
                           "collectionType": {
                             "planetModel": {
-                              "name": "aww yea"
+                              "type": "object",
+                              "missions": {
+                                "type": "collection",
+                                "collectionTypeName": "missionModel",
+                                "collectionType": {
+                                  "missionModel": {
+                                    "type": "object",
+                                    "missionTypes": [
+                                      {
+                                        "name": "An Amazing Opportunity You Can't Miss!",
+                                        "startingDialogue": "Hah! Looks like you stepped into our trap! Prepare to be boarded yee scallywags!",
+                                        "hasBattle": true,
+                                        "startInitiatesBattle": true,
+                                        "endingDialogue": "Well played mate. By the code of space pirates, you now get all of our honestly-acquired booty!",
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Playing Fetch",
+                                        "startingDialogue": "What? You want a mission? Uhh alright, go fetch me a {relic name}.",
+                                        "hasBattle": false,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Ham sandwich",
+                                        "endingDialogue": "Hmm? What would I want with a {relicName}? Get outta here!",
+                                        "requiresRoundTrip": false
+                                      }
+                                    ]
+                                  }
+                                },
+                                "min": 0,
+                                "max": 3
+                              }
                             }
                           },
                           "min": 1,
