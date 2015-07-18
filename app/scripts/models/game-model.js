@@ -17,8 +17,13 @@ define(
 		this.init = function() {
 			// set up the state and all event listeners
 			this.player = new PlayerModel();
+      this.player.init();
 			this.chance = new Chance();
       this.buildMap();
+
+      $('.currentSolrSystem').text(this.player.currentLocation.name);
+      $('.currentCredits').text(this.player.resources['stardust']);
+      $('.currentFuel').text(this.player.spaceship.fuel);
 		};
 
 		this.buildMap = function() {

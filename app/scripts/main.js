@@ -27,8 +27,8 @@ require.config({
 require([
     'gameModel',
     'gameView',
-    'progress'
-], function (GameModel, GameView, p) {
+	'playerModel'    
+], function (GameModel, GameView, PlayerModel) {
     var g = new GameModel();
     g.init();
     var v = new GameView();

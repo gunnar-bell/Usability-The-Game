@@ -27,8 +27,26 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-        <canvas id="canvas" width="1200" height="600" style="background-color: black;">
-        </canvas>
+        <div class="usability">
+            <div class="mapWrapper">
+                <canvas id="canvas" width="1200" height="600" style="background-color: black;">
+                </canvas>
+            </div>
+            <span class='rightNavy'>
+                <div>
+                    <span>Current Solr System:</span>
+                    <span class='currentSolrSystem'></span>
+                </div>
+                <div>
+                    <span>Total Stardust: </span>
+                    <span class='currentCredits'></span>
+                </div>
+                <div>
+                    <span>Fuel: </span>
+                    <span class='currentFuel'></span>
+                </div>
+            </span>
+        </div>
 
         <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>

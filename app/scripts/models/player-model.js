@@ -13,7 +13,7 @@ define([
       console.log('building playerModel!!');
       this.spaceship = new SpaceshipModel();
       this.health = 90;
-      this.resources = {'stardust':5};
+      this.resources = {'stardust':50000};
       this.strength = 10;
       
       this.attack = function(attackee) {

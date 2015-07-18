@@ -1,10 +1,9 @@
 define([], function() {
   var SpaceshipModel = function() {
-    this.init = function() {
-      this.fuel = 1; // between 0 and 1
-      this.health = 1;
-    };
-
+    this.fuel = 40000; // between 0 and 1
+    this.health = 1;
+    
+    // todo adjust this for the new fuel
     this.refuel = function() {
       while (this.fuel < 1) {
         setInterval(function(){

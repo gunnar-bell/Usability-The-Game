@@ -10,10 +10,10 @@ define(
 		this.solrSystems = [];
 		this.others = ['a black hole?'];
 		this.moralStanding = 'GOOD|EVIL';
-    this.position = {
-      'x': chance.floating({'min': 0, 'max': 1}),
-      'y': chance.floating({'min': 0, 'max': 1})
-    }
+	    this.position = {
+	      'x': chance.floating({'min': 0, 'max': 1}),
+	      'y': chance.floating({'min': 0, 'max': 1})
+	    }
 
     this.load = function(galaxyData) {
       var min = galaxyData['solrSystems']['min'];
@@ -38,7 +38,6 @@ define(
                 destinationIndex = i + 1;
               }
               mission.setDestination(this.solrSystems[destinationIndex]);
-              console.log(mission);
             }
           }
         }

@@ -1,8 +1,9 @@
-body {
-    background: #fafafa;
+.mapWrapper {
+  width: 85%;
+  float: left;
 }
-
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
+.rightNavy {
+  width: 15%;
+  background-color: #FDE3A7;
+  float: left;
 }
