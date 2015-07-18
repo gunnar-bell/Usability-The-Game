@@ -12,7 +12,8 @@ require.config({
         playerModel: 'models/player-model',
         universeModel: 'models/universe-model',
         solrSystemModel: 'models/solr-system-model',
-        planetModel: 'models/planet-model'
+        planetModel: 'models/planet-model',
+        spaceshipModel: 'models/spaceship-model'
     }
 });
 

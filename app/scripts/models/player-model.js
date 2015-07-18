@@ -1,4 +1,6 @@
-define([], function() {
+define([
+      'spaceshipModel'
+    ], function(SpaceshipModel) {
 	var PlayerModel = function() {
     this.init = function() {
 		  this.spaceship = new SpaceshipModel();
@@ -7,7 +9,7 @@ define([], function() {
       this.currentPlanet = 'earth';
 	    console.log('building playerModel!!');
     };
-    this.position  = this.currentPlanet.location;
+    this.position  = {'x':100,'y':100};//this.currentPlanet.location;
 	};
 
 	return PlayerModel;
