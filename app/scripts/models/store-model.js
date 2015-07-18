@@ -9,13 +9,13 @@ define(
 
     this.init = function(SolrSystem) {
       this.assets = this.chance.natural({min: 1000, max: 10000});
-      this.solrSystem = SolrSystem;
       this.setPrices();
     }
 
-    this.setPrices = function() {
+    // Strength is the strength of the solr system we're in
+    this.setPrices = function(strength) {
       // The maximum strength a solr system can begin with is 150. Scale by this.
-      var relativeStrength = this.solrSystem.strength / 150;
+      var relativeStrength = strength / 150;
       switch(this.type) {
         case 'fuel':
           this.pricePerUnit = 8;
@@ -29,9 +29,10 @@ define(
       this.pricePerUnit *= relativeStrength;
     }
 
+    // Return the number we should add to the strength of the solr system
     this.sellGoods = function(numSold) {
        this.assets -= numSold;
-       this.solrSystem.strength += 0.5 * (numSold * pricePerUnit);
+       return 0.5 * (numSold * pricePerUnit);
     }
 	}
 
