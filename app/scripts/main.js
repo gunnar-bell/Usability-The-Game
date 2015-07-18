@@ -7,6 +7,7 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         chance: '../bower_components/chance/chance',
+        progress: '../bower_components/progressbar/dist/progressbar',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/lodash/dist/lodash',
         gameModel: 'models/game-model',
@@ -25,8 +26,10 @@ require.config({
 
 require([
     'gameModel',
-    'gameView'
-], function (GameModel, GameView) {
+    'gameView',
+    'progress'
+], function (GameModel, GameView, p) {
+	debugger;
     var g = new GameModel();
     g.init();
     var v = new GameView();
