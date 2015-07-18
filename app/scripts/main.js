@@ -18,4 +18,5 @@ require([
     'universeModel'
 ], function (GameModel) {
     var g = new GameModel();
+    g.init();
 });
