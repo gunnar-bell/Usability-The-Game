@@ -10,9 +10,8 @@ define(
 
     this.init = function() {
       this.moralStanding = 'GOOD|EVIL';
-      this.hasGasStation = false;
       this.location = {x: 'a number', y: 'a number'};
-      this.strength = this.chance.natural({min: 5, max: 25});
+      this.strength = this.chance.natural({min: 5, max: 30});
     }
     this.getLocation = function() {
     	return this.location;

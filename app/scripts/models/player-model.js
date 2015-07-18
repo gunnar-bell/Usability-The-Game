@@ -40,7 +40,7 @@ define([
 
     this.refuelSpaceship = function() {
       // TODO: i changed currentLocation to be a star system, so this check will need to be updated. Sorry!
-      if (this.currentLocation.hasGasStation) {
+      if ('fuel' in this.currentLocation.opportunities) {
         var refillCost = this.currentLocation.strength * .25;
         var refill = confirm('Fuel up here? It will cost ' + refillCost + ' grams of stardust.');
         if (refill) {

@@ -5,22 +5,23 @@ require.config({
     shim: {
     },
     paths: {
-        jquery: '../bower_components/jquery/dist/jquery',
-        chance: '../bower_components/chance/chance',
-        progress: '../bower_components/progressbar/dist/progressbar',
         backbone: '../bower_components/backbone/backbone',
-        underscore: '../bower_components/lodash/dist/lodash',
-        gameModel: 'models/game-model',
-        playerModel: 'models/player-model',
-        multiverseModel: 'models/multiverse-model',
-        universeModel: 'models/universe-model',
+        chance: '../bower_components/chance/chance',
         galaxyModel: 'models/galaxy-model',
-        solrSystemModel: 'models/solr-system-model',
-        planetModel: 'models/planet-model',
-        spaceshipModel: 'models/spaceship-model',
-        missionModel: 'models/mission-model',
+        galaxyView: 'views/galaxy-view',
+        gameModel: 'models/game-model',
         gameView: 'views/game-view',
-        galaxyView: 'views/galaxy-view'
+        jquery: '../bower_components/jquery/dist/jquery',
+        missionModel: 'models/mission-model',
+        multiverseModel: 'models/multiverse-model',
+        planetModel: 'models/planet-model',
+        playerModel: 'models/player-model',
+        progress: '../bower_components/progressbar/dist/progressbar',
+        solrSystemModel: 'models/solr-system-model',
+        spaceshipModel: 'models/spaceship-model',
+        storeModel: 'models/store-model',
+        underscore: '../bower_components/lodash/dist/lodash',
+        universeModel: 'models/universe-model'
     }
 });
 

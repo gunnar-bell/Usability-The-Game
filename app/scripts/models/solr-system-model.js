@@ -2,15 +2,18 @@ define(
   [
     'jquery',
     'chance',
-    'planetModel'
+    'planetModel',
+    'storeModel'
   ],
-  function($, Chance, PlanetModel) {
+  function($, Chance, PlanetModel, StoreModel) {
 
   var SolrSystemModel = function(options) {
     this.planets = [];
     this.opportunities = [];
     this.chance = new Chance();
-
+    this.stores = [];
+    this.strength = 0;
+  
     var opportunityTypes = {
       'fuel': {
         'display': 'Fuel Up!',
@@ -21,7 +24,7 @@ define(
         'chance': 0.8
       },
       'weapons': {
-        'display': 'Laser Beams Sold Here!',
+        'display': 'Marshmallows Sold Here!',
         'chance': 0.3
       },
       'repairs': {
@@ -35,12 +38,14 @@ define(
       var planetCount = this.planets.length;
       var goodScore = 0;
       var evilScore = 0;
+      
       for (var i = 0; i < planetCount; i++) {
         if (this.planets[i].moralStanding == 'GOOD') {
           goodScore ++;
         } else {
           evilScore ++;
         }
+        this.strength += this.planets[i].strength;
       }
       this.moralStanding = (evilScore > goodScore) ? 'EVIL' : 'GOOD';
 
@@ -66,6 +71,9 @@ define(
       for (var key in opportunityTypes) {
         if (opportunityTypes.hasOwnProperty(key) && this.chance.floating({min: 0, max: 1}) >= (1 - opportunityTypes[key].chance)) {
           this.opportunities.push(opportunityTypes[key].display);
+          store = new StoreModel(opportunityTypes[key]);
+          store.init(this);
+          this.stores.push(store);
         }
       }
     }
