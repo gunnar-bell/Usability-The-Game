@@ -20,7 +20,7 @@ define(
     this.player = 'x';
 
     this.load = function(planetData) {
-      this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1})}
+      this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1})};
     }
 	}
 
