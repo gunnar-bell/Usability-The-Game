@@ -1,9 +1,38 @@
+html, body {
+  height: 100%;
+  margin: 0; padding: 0;  /* to avoid scrollbars */
+}
+.usability {
+  height: 100%;
+  width: 100%;
+}
 .mapWrapper {
-  width: 85%;
-  float: left;
+  height: 85%;
+  width: 80%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.canvas {
+
 }
 .rightNavy {
-  width: 15%;
+  border: 5px solid white;
+  border-radius: 5px;
+  width: calc(20% - 20px);
   background-color: #FDE3A7;
-  float: left;
+  position: fixed;
+  right: 0;
+  height: 85%;
+}
+.textArea {
+    background-color: #222;
+    color: white;
+    height: calc(15% - 20px);
+    border: 5px solid white;
+    border-radius: 5px;
+    padding: 5px 5px 5px 100px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

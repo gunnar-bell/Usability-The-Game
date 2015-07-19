@@ -5,6 +5,7 @@ define(
     'galaxyView'
   ],
   function($, Chance, GalaxyView) {
+
     var GameView = function() {
 
       this.galaxyView = null;
@@ -16,6 +17,14 @@ define(
         this.galaxyView = new GalaxyView(this.canvas);
         this.galaxyView.render(gameModel);
         this.activeView = this.galaxyView;
+      };
+
+      this.init = function() {
+        var c = $('#canvas');
+        var container = $(c).parent();
+        // resize canvas to fit its parent
+        c.attr('width', $(container).width() );
+        c.attr('height', $(container).height() );
       };
     };
 

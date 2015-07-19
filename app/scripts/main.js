@@ -34,5 +34,6 @@ require([
     var g = new GameModel();
     g.init();
     var v = new GameView();
+    v.init();
     v.render(g);
 });

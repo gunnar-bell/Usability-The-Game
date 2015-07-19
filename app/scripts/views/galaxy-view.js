@@ -113,7 +113,7 @@ define(
           var solrSystem = galaxyModel.solrSystems[i];
           var x = canvas.width * solrSystem.position.x;
           var y = canvas.height * solrSystem.position.y;
-          var size = 8 + solrSystem.size * 6;
+          var size = 8 + solrSystem.size * 6; // this should probably factor in the size of the window?
 
           var circle = new createjs.Shape();
           circle.graphics.beginRadialGradientFill(['orange','yellow'], [0, 1], 0, 0, size / 3, 0, 0, size).drawCircle(0, 0, size);
