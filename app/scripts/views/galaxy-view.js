@@ -141,6 +141,9 @@ define(
         this.updatePlayerLocation();
         this.stage.addChild(this.playerSprite);
         this.stage.update();
+
+        // Let's tell the local view to render planets of the starting solr system
+        this.localView.render(gameModel);
       };
 
       this.updatePlayerLocation = function() {
