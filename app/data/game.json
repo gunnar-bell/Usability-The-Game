@@ -83,8 +83,157 @@
                                         "endingDialogue": "This here ring of fire only looks like its on fire, all the time.  Except it's not.  It just looks that way.  You can spin it and twirl it while wearing polyester. No problemo.",
                                         "requiresTravel": true,
                                         "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Delectable Treats!",
+                                        "startingDialogue": "Mrs. Fields and her progeny made so much money from her secret chocolate chip cookie recipe that her kin took over entire Solr Systems full of dedicated citizens.  I'm one of Mrs. Fields' decendents.  Help me make a batch and you can keep one dozen.  --Mrs. Fields CXVII",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Cookies and Milk",
+                                        "endingDialogue": "You now have 12 Mrs. Fields cookies and a big glass of milk.  They are so good.  You are overcome with joy.  Oh yeah, this is happening.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Clean Up Your Act!",
+                                        "startingDialogue": "I am Galaheil.  I am the mother of cleanliness.  I want you to have this soap because you are filthy!  This bar of soap will never deplete.  You may take 2 showers a day if you need to and this bar of soap will be as clean and as soapy as the day I made it.  All you have to do is prove that you're worthy of receiving this gift! --Galaheil, mother of cleanliness",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Infinity Lavender Bar of Soap",
+                                        "endingDialogue": "You won!  This is pretty cool.  It's a purple bar of soap that never gets used up, always stays perfectly clean, and smells of crisp lavender, reminding you of a summer meadow atop a wistful mountain range chastened by a soft but cool breeze. You hear birds singing as you relax in a hammock in the shade.  Then realize it's only your imagination and you snap out of it.  This is still pretty cool.  This soap is probably worth a fortune.  Sell it online?  Yeahhhh, probably.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Quick, Untie This!",
+                                        "startingDialogue": "Help me untangle this knot and you can have this magical rope to keep! --puzzled lad",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Magical Rope with Impossible Knot",
+                                        "endingDialogue": "You untangle the knot and as soon as you're done, it tangles itself again.  Yup, it's magic alright, but not much good for anything but passing the time.  Probably sell it online or something as like a fun game for kids or some such.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "This will make you jump!",
+                                        "startingDialogue": "You'll never defeat me! I am jumping all around in my special edition shoes!  Which are jet propelled.  You can't hit me.  You can't touch this.  --space basketball player",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Air Air Jordans",
+                                        "endingDialogue": "Oh, you totally dunked that dude.  You now have your very own pair of Air Air Jordans, which are super jump shoes that basically give you ability to fly at low altitudes.  Too bad they give you really bad blisters.  Better sell them online.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Repair Planetary Defense System",
+                                        "startingDialogue": "Repair the Planet Core Disruptor Disruptor!  You have 2 days to complete your work and an unlimited budget.  Good luck with that.  --eager statesman",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Certificate of Accomplishment",
+                                        "endingDialogue": "The Planet Core Disruptor is one of the most destructive weapons in the universe.  Luckily Planet Core Disruptor Disruptors are a dime a dozen and you just fixed the broken one on this system's crown jewel planet by hiring an exterminator to beat back the critters that had infested it's kernel.  Even luckier: Planet Core Disruptor Disruptor DISRUPTORS are not a thing.  Otherwise you would have to build a ... well, you get the idea.  You just saved a whole people but have gained nothing to sell online.  Good job, though.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Play me a tune on that old thing!",
+                                        "startingDialogue": "Find the best violin in the history of the universe and bring it back here so I can take a look at it! --professor of music",
+                                        "hasBattle": false,
+                                        "relicPurchasePercent": 0.4,
+                                        "relicName": "Original Stratavarious (better than a Stradivarius)",
+                                        "endingDialogue": "Stradivarius violins are hard to fake, and this one, although counterfeit, is the only known copy that actually exceeds the quality, value and worksmanship of the original, playing a far sweeter tune.  It was apparently made by some alien dude named Stratavarious, which is a remarkably similar name.  While virtually priceless, most people don't play the violin, so they won't buy it off you.  Some banks might, maybe.  Probably best to list it online though.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": true
+                                      },
+                                      {
+                                        "name": "Atomic Number 2",
+                                        "startingDialogue": "A fairly rare element named helium has been mined on most planets. It was long ago taken by the United Federation of Helium Talkers, of the Upoppenaway System and stored on large protected storage unit planets.  Since it is often doled out by their governments in small doses to the Helium Talkers desperate to speak in their native tongue in the high pitches that it necessitates, even modest amounts fetch a pretty penny on the black market.",
+                                        "hasBattle": false,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Silver Balloon",
+                                        "endingDialogue": "It's mostly just a sad little balloon of supermylar that hovers slightly off the ground.  It will still fetch a pretty penny on those black markets.  The faded painting indicates that it might have been used for an ancient tribal ritual of some kind.  May the Upoppenaway System take your wallet up, up and away, online.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Fly Like an Eagle!",
+                                        "startingDialogue": "The can says Genetically Modified Red Bull.  It doesn't taste good like regular Red Bull.  It's overly syrupy and more oozes than flows.  You have to have to try to drink it though because you are damn thirsty.  This is a battle in and of itself.",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Wings that work well but look unhealthy, and itch",
+                                        "endingDialogue": "As you gulp it down, you read the catchphrase.  Red Bull Gives You Wings!  So, guess what... you are, as we speak, growing wings, now, champ.   It hurts like anything ever hurt.  But it's over in mere moments.  Your new wings are horribly misshapen and ugly as sin.  But you can fly, in most atmospheres, so now you have that going for you.  Too bad they are attached to you and integrated with your DNA so you can't offload them online or anything like that.  You're stuck with it.  You can FLY.  It's not the worst thing.  You head to the nearest store for some Wing Cream to smooth out the rough patches.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Speaker System",
+                                        "startingDialogue": "There is a large concert speaker made in Earth's 25th Century, long ago, by some company name Boise, I think.  Maybe they were from Idaho?  Anyway, big huge speakers.  Loud as hell.  They work on special battery technology that is clean and they fully recharge themselves during continuous use.  You just found a set!  Amazeballs. They are instantly your most prized possession.",
+                                        "hasBattle": false,
+                                        "relicPurchasePercent": 0.6,
+                                        "relicName": "BOSE Infinity Series System",
+                                        "endingDialogue": "You can turn the volume on these bad boys to 11 and people will come flocking to your desert concerts toting tents, begging you to take their money for entry so they can listen and buy overpriced bottled water from your kiosks for days on end.  So long as the music you are playing through them is good music, of course.  Time to do a sanity check with your friends on the ole playlist, dontchathink?",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Scruffy Looking NERF Herder",
+                                        "startingDialogue": "Most NERF guns are just, well, NERF.  This one that I have is real though.  Defeat me and you can have it!  --the guy wearing the funny hat",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.5,
+                                        "relicName": "NERF, Reality Series",
+                                        "endingDialogue": "You have defeated that guy who was wearing that silly hat made out of balloon animals.  As promised, you have received for your victory a NERF gun that is really real.  I mean these darts, when they hit you, they sting real bad.  I mean they are still not actually dangerous long term.  But short term, they seriously sting.  Plus they go superfar.  You've scoured the interwebs for years looking for this.  So no way you're parting with this puppy.  Oh yeah, that's gonna leave a mark!  +1 in Battles from now on because people are like 'Wait, wait, wait, time out, I have to go to the hospital right now.'",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "The Throne of Wisdom",
+                                        "startingDialogue": "You'll never defeat me in this here game of wits and wisdom.  If you do, you can have my Chair of Wisdom and wait for other contenders to come along and defeat you at games of wits and wisdom.  --wizened woman.",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.01,
+                                        "relicName": "Zip, Zilch, Nada",
+                                        "endingDialogue": "You actually have bested this particular gray lady this particular time, and it's enough for her to stand aside, bewildered and begrudged.  You sit gently down upon your new throne, which looks like just a regular old wooden chair.  At the moment your seat hits the seat, you are surprised to feel exactly nothing.  You bid her farewell, leaving the chair behind.  She sits back down, grateful, and looks around for other willing foes.",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Today's Tom Sawyer",
+                                        "startingDialogue": "RUSH was a famous rock group that played on Earth back in the day.  They sang of the future, and the music is still universally played.  Governments outlawed the printing of RUSH T-shirts long ago in order to artificially increase the value of the ones that were already in circulation.  Highly distressed, faded ones fetch the highest prices because they look the coolest.",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "RUSH T-Shirt",
+                                        "endingDialogue": "This RUSH t-shirt is quite raggedy, indeed!  Shabby in a way that really gives it that 'je ne sais quoi' oomf that serious collectors desire.  Although you too love  RUSH and would love to wear it, it is two sizes too big for you and you decide that it would likely look ridiculous.  So, probably just sell it online.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "Let Freedom Ring, Kiai!",
+                                        "startingDialogue": "I wear the Ring of Freedom and I know that I have honed my mental focus such that it exceeds your own, because I have used the freedom that this ring grants me to to study martial arts for decades.  No weapons allowed, friend!  Good luck!  Kiai!!!! --black belt blond woman in white karate suit",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.2,
+                                        "relicName": "Cracker Jack ring",
+                                        "endingDialogue": "After a hard won battle, the ring falls to the floor.  You slip the ring on your finger and you feel like you can do anything, like anything you decide to do, you can do.  It is not that you actually could do anything, but you do FEEL that way, which is important for your mental well-being.  That you can do anything.  And those things that you cannot do, you never wanted to do anyhow.  Like fly without wings.  Did you see the movie Dumbo?  Yeah, this ring of freedom has a little inscription that reads Cracker Jack.  Even online, it's completely worthless unless you can convince yourself otherwise, which isn't too difficult.  You list it, you know, just to see.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "The Last of Her Kind",
+                                        "startingDialogue": "Oh man, this pigeon looks mad.  It's eyes look angrily in different directions.  This is a big pigeon, not just fatty, but muscular too.  It's colors are beautiful and remind you of an oil slick.  But don't let that distract you.  Boy does she look pissed.  She has a little note around her neck.  You unfurl it and it reads: Due to automated trash pickup drones, I am the last of my kind.  Prepare to die, human!  Her eyes suddenly look in one direction, right at you.  You put up your dukes as she monopolies your field of vision.",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.1,
+                                        "relicName": "Pet Pigeon",
+                                        "endingDialogue": "You have managed to subdue the pigeon.  You open up a new note that reads. OK, I'll be your pet. Can I please have some crumbs?  Yup, it's the last pidgeon ever folks and she's pledged you her loyalty.  If you had a circus, you could make a mint.  You don't have a circus though, and never will.  You've thought about starting one, but on second thoughts, decided not.  So, what the heck are you going to do with a pidgeon?  Better sell the pigeon online.",
+                                        "requiresTravel": false,
+                                        "requiresRoundTrip": false
+                                      },
+                                      {
+                                        "name": "You say Tomato, I say Tomato",
+                                        "startingDialogue": "Infiltrate the intergalactic seed bank to steal, errr, liberate, their most premium seeds and come back here and plant them.",
+                                        "hasBattle": true,
+                                        "relicPurchasePercent": 0.7,
+                                        "relicName": "Best Tomato Seeds in all of Existence",
+                                        "endingDialogue": "These seeds will grow the most ideal tomatoes possible, every, single, freakin', time.  Sweet!  You plant the seeds and then guess what? Sell those juicy tomatoes online or something.  Pizza pizza!",
+                                        "requiresTravel": true,
+                                        "requiresRoundTrip": true
                                       }
-
                                     ]
                                   }
                                 },

@@ -65,7 +65,7 @@ define(
         this.planets.push(planet);
       }
 
-      this.position = { 'x': this.chance.floating({min: 0, max: 1}), 'y': this.chance.floating({min: 0, max: 1}) };
+      this.position = { 'x': this.chance.floating({min: 0.03, max: 0.97}), 'y': this.chance.floating({min: 0.03, max: 0.97}) };
       this.size = this.chance.floating({min: 0, max: 1});
 
       for (var key in opportunityTypes) {
