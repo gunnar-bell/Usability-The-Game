@@ -12,6 +12,7 @@ require.config({
         gameModel: 'models/game-model',
         gameView: 'views/game-view',
         jquery: '../bower_components/jquery/dist/jquery',
+        localView: 'views/local-view',
         missionModel: 'models/mission-model',
         multiverseModel: 'models/multiverse-model',
         planetModel: 'models/planet-model',

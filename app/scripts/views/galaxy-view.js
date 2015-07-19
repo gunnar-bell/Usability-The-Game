@@ -3,9 +3,10 @@ define(
     'jquery',
     'chance',
     'solrSystemModel',
-    'playerModel'
+    'playerModel',
+    'localView'
   ],
-  function($, Chance, SolrSystemModel, PlayerModel) {
+  function($, Chance, SolrSystemModel, PlayerModel, LocalView) {
     var GalaxyView = function(canvas) {
 
       this.stage = new createjs.Stage('canvas');
