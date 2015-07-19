@@ -12,7 +12,7 @@ define(
     this.opportunities = [];
     this.chance = new Chance();
     this.stores = [];
-    this.strength = 0;
+    this.strength = 5;
   
     var opportunityTypes = {
       'fuel': {
@@ -71,9 +71,9 @@ define(
       for (var key in opportunityTypes) {
         if (opportunityTypes.hasOwnProperty(key) && this.chance.floating({min: 0, max: 1}) >= (1 - opportunityTypes[key].chance)) {
           this.opportunities.push(opportunityTypes[key].display);
-          store = new StoreModel(opportunityTypes[key]);
-          store.init(this);
-          this.stores.push(store);
+          store = new StoreModel(key);
+          store.init(this.strength);
+          this.stores[key] = store;
         }
       }
     }

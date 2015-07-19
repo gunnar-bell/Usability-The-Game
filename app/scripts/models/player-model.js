@@ -2,8 +2,8 @@ define([
       'jquery',
       'chance',
       'spaceshipModel',
-      'planetModel'
-    ], function($, Chance, SpaceshipModel, PlanetModel) {
+      'solrSystemModel'
+    ], function($, Chance, SpaceshipModel, solrSystemModel) {
   var PlayerModel = function() {
     this.chance = new Chance();
     this.fuelFactor = 100000;
@@ -26,8 +26,8 @@ define([
       }
     };
 
-    this.moveTo = function(locationModel) {
-      this.currentLocation = locationModel;
+    this.moveTo = function(solrSystemModel) {
+      this.currentLocation = solrSystemModel;
       this.position  = this.currentLocation.position;
 
       // TODO: We should show the list of available missions here and let the user select the ones he wants. But for now we will just accept the first one
@@ -65,6 +65,13 @@ define([
       ys = ys * ys;
 
       return Math.sqrt( xs + ys );
+    }
+    // Type of store and amount of stuff we want to buy
+    // Assuming the location of the store is the same as our location
+    // Also assuming we HAVE a store of this type or wouldn't be trying to buy from it
+    this.buyStuff = function(type,quantity){
+      store = this.currentLocation.stores[type];
+      this.currentLocation.strength += store.sellGoods(quantity);
     }
   };
 

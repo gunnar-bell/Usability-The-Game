@@ -23,6 +23,7 @@ define(
       for (var i = 0; i < count; i++) {
         var solrSystem = new SolrSystemModel();
         solrSystem.load(galaxyData['solrSystems']['collectionType']['solrSystemModel']);
+        solrSystem.init();
         this.solrSystems.push(solrSystem);
       }
 
