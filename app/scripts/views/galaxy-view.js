@@ -12,13 +12,22 @@ define(
       this.stage = new createjs.Stage('canvas');
       this.stage.enableMouseOver(10);
 
+      var gameContainer = new createjs.Container(); 
+      this.stage.addChild(gameContainer);
+
+      var hudContainer = new createjs.Container();
+      this.stage.addChild(hudContainer);
+
       this.canvas = canvas;
+      this.gameContainer = gameContainer;
+
+      // TODO: someday the battle view should probably be its own stage managed by a battle-view.js object
 
       this.details = new createjs.Container();
       this.rect = new createjs.Shape();
       var rectWidth = 200;
       var rectHeight = 100;
-      this.rect.graphics.beginFill('#6e7e8e').drawRect(0, 0, rectWidth, rectHeight);
+      this.rect.graphics.beginFill('#6e7e8e').drawRoundRect(0, 0, rectWidth, rectHeight, 4);
 
       this.text = new createjs.Text();
       this.text.set({
@@ -48,23 +57,17 @@ define(
           zoomLevel = 1/1.1;
 
         mousePosition = view.createPosition(view.stage.mouseX, view.stage.mouseY);
-        console.log(mousePosition);
+        // console.log(mousePosition);
         view.zoomOnPosition(mousePosition, zoomLevel, true);
-        // var local = view.stage.globalToLocal(view.stage.mouseX, view.stage.mouseY);
-        // view.stage.regX = local.x;
-        // view.stage.regY = local.y;
-        // view.stage.x = view.stage.mouseX;
-        // view.stage.y = view.stage.mouseY; 
-        // view.stage.scaleX = view.stage.scaleY *= zoomLevel;
 
         view.stage.update();
       }
 
       this.stage.addEventListener("stagemousedown", function(e) {
-        var offset = { x: view.stage.x - e.stageX, y: view.stage.y - e.stageY };
+        var offset = { x: view.gameContainer.x - e.stageX, y: view.gameContainer.y - e.stageY };
         view.stage.addEventListener("stagemousemove",function(ev) {
-          view.stage.x = ev.stageX+offset.x;
-          view.stage.y = ev.stageY+offset.y;
+          view.gameContainer.x = ev.stageX+offset.x;
+          view.gameContainer.y = ev.stageY+offset.y;
           view.stage.update();
         });
         view.stage.addEventListener("stagemouseup", function(){
@@ -82,21 +85,30 @@ define(
       }
 
       // Take a lot of these helper things and throw them in their own helper util or something
-      this.zoomOnPosition = function(position, zoomLevel, relativeZoom) {
+      this.zoomOnPosition = function(position, zoomLevel, relativeZoom, container, reset) {
+        if (!container) {
+          container = gameContainer;
+        }
         // This works well scaleX/Y is 1 but gets messed up when already zoomed.
         var x = position.x;
         var y = position.y;
-        var local = view.stage.globalToLocal(x, y);
-        // console.log(local);
-        // console.log(x + ' , ' + y);
-        view.stage.regX = local.x;
-        view.stage.regY = local.y;
-        view.stage.x = x;
-        view.stage.y = y;
-        if (relativeZoom) {
-          view.stage.scaleX = view.stage.scaleY *= zoomLevel;
+        if (reset) {
+          container.regX = 0;
+          container.regY = 0;
         } else {
-          view.stage.scaleX = view.stage.scaleY = zoomLevel;
+          var local = container.globalToLocal(x, y);
+          container.regX = local.x;
+          container.regY = local.y;
+        }
+        container.x = x;
+        container.y = y;
+
+        //console.log([container.regX, container.regY, container.x, container.y]);
+
+        if (relativeZoom) {
+          container.scaleX = container.scaleY *= zoomLevel;
+        } else {
+          container.scaleX = container.scaleY = zoomLevel;
         }
         view.stage.update();
       }
@@ -133,17 +145,27 @@ define(
             view.hideDetails();
           });
 
-          this.stage.addChild(circle);
+          this.gameContainer.addChild(circle);
         }
 
         // And place the player as well
         this.playerSprite.graphics.setStrokeStyle(1).beginStroke('black').beginFill('red').drawCircle(0, 0, 4);
         this.updatePlayerLocation();
-        this.stage.addChild(this.playerSprite);
-        this.stage.update();
+        this.gameContainer.addChild(this.playerSprite);
 
         // Let's tell the local view to render planets of the starting solr system
         this.localView.render(gameModel);
+
+        zoomControlButton = new createjs.Shape();
+        zoomControlButton.graphics.beginFill('#6e7e8e').drawRoundRect(0, 0, 50, 50, 5);
+        zoomControlButton.x = 10;
+        zoomControlButton.y = 10;
+        zoomControlButton.on("click", function(event) {
+          view.zoomOnPosition(view.createPosition(0, 0), 1, false, null, true);
+        });
+        hudContainer.addChild(zoomControlButton);
+
+        this.stage.update();
       };
 
       this.updatePlayerLocation = function() {
@@ -168,7 +190,7 @@ define(
         var convertedPosition = this.convertRelativeToCanvasPosition(solrSystemModel.position);
         convertedPosition = {x: convertedPosition.x - 5, y: convertedPosition.y - 5};
         // { x: this.stage.scaleX, y: this.stage.scaleY } - they are always 1:1
-        animations.push({type: 'zoom', originalZoom: this.stage.scaleX, finalZoom: 6, destination: convertedPosition, speed: 4});
+        animations.push({type: 'zoom', originalZoom: this.gameContainer.scaleX, finalZoom: 6, destination: convertedPosition, speed: 4});
 
         gameModel.player.moveTo(solrSystemModel);
         //this.updatePlayerLocation();
@@ -186,7 +208,9 @@ define(
 
       this.tick = function() {
         var animationsCompleted = [];
+        var doUpdate = false;
         for (var i = 0; i < animations.length; i++) {
+          doUpdate = true;
           var animation = animations[i];
           if (animation.type == 'move') {
             var objPosition = {x: animation.obj.x, y: animation.obj.y};
@@ -213,7 +237,7 @@ define(
           } else if (animation.type == 'zoom') {
             // Which direction? in or out?
             var speed = animation.speed > 0.0001 ? animation.speed : 0.0001
-            if ( view.stage.scaleX < animation.finalZoom) {
+            if ( view.gameContainer.scaleX < animation.finalZoom) {
               zoomingIn = true;
               zoomLevel = 1 + speed * 0.01;
             } else {
@@ -225,7 +249,7 @@ define(
             view.zoomOnPosition(animation.destination, zoomLevel, true)
 
             // mark this animation as having been completed.
-            if ((zoomingIn && view.stage.scaleX >= animation.finalZoom) || (!zoomingIn && view.stage.scaleX <= animation.finalZoom)) {
+            if ((zoomingIn && view.gameContainer.scaleX >= animation.finalZoom) || (!zoomingIn && view.gameContainer.scaleX <= animation.finalZoom)) {
               animationsCompleted.push(i);
             }
           }
@@ -237,7 +261,10 @@ define(
           animations.splice(animationsCompleted[completed], 1);
         }
 
-        view.stage.update();
+        // This avoids updating when we don't have any anymations.
+        if (doUpdate) {
+          view.stage.update();
+        }
       };
 
       this.arePointsEqual = function(position1, position2) {

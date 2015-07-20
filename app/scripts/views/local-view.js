@@ -12,6 +12,7 @@ define(
     var canvas = galaxyView.canvas;
     this.stage = this.galaxyView.stage;
     this.stage.enableMouseOver(10);
+    this.gameContainer = this.galaxyView.gameContainer;
 
     this.canvas = canvas;
 
@@ -29,14 +30,12 @@ define(
         var size = 1 + planet.strength / 4;
 
         var circle = new createjs.Shape();
-        circle.graphics.setStrokeStyle(1).beginStroke('black').beginRadialGradientFill(["#0F0","#00F"], [0, 1], 0, 0, size / 3, 0, 0, size).drawCircle(0, 0, size);
+        circle.graphics.setStrokeStyle(1).beginStroke('black').beginRadialGradientFill(["#0F0","#00F"], [0, 1], 0, 0, size / 1.7, 0, 0, size).drawCircle(0, 0, size);
         circle.x = x;
         circle.y = y;
-        //beginRadialGradientFill(["#F00","#00F"], [0, 1], 100, 100, 0, 100, 100, 50)
-        //circle.graphics.beginStroke('black').beginFill('green').drawCircle(x, y, size);
         circle.index = i;
 
-        this.stage.addChild(circle);
+        this.gameContainer.addChild(circle);
       }
 
       this.stage.update();
